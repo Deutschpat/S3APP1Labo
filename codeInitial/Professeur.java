@@ -1,13 +1,21 @@
 package codeInitial;
 
-public class Professeur {
+public final class Professeur {
 
     private String cip;
     private String nom;
+    private static Professeur professeur = null;
 
-    public Professeur(String cip, String nom) {
+    private Professeur(String cip, String nom) {
         this.cip = cip;
         this.nom = nom;
+    }
+
+    public static Professeur getInstance(String cip, String nom){
+        if(professeur == null){
+            professeur = new Professeur(cip, nom);
+        }
+        return professeur;
     }
 
     @Override
